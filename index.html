@@ -329,6 +329,7 @@
   }
    .download-btn, .quick-view {
       width: 75%;
+      height: 20%; 
       margin-left: 0;
     }
     
@@ -609,7 +610,7 @@
           ${item.extraInfo ? `<p><small>${item.extraInfo}</small></p>` : ''}
           <div class="action-buttons">
             <a href="${item.downloadUrl}" class="download-btn" data-id="${item.id}">Download</a>
-            <button class="quick-view" data-id="${index}">Quick View</button>
+            <button class="quick-view" data-id="${index}">More Info</button>
           </div>
         </div>
       `;
