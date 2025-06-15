@@ -66,6 +66,19 @@
     cursor: pointer;
   }
 
+  .theme-label {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #666;
+  }
+  
+  body.dark-mode .theme-label {
+    color: #aaa;
+  }
+
   h1 {
     text-align: center;
     margin-bottom: 10px;
@@ -82,209 +95,8 @@
     font-size: 1.1em;
   }
   
-  /* Toolbar Styles */
-  .toolbar {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1000px;
-    margin: 0 auto 20px;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
+  /* [Keep all other existing CSS styles] */
   
-  #search-container {
-    flex: 1;
-    min-width: 250px;
-    display: flex;
-  }
-  
-  #search-input {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #444;
-    border-right: none;
-    border-radius: 4px 0 0 4px;
-    background: rgba(255,255,255,0.9);
-  }
-  
-  #search-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: 2px solid #444;
-    background: #444;
-    color: white;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
-    transition: background 0.3s ease;
-  }
-  
-  #search-btn:hover {
-    background: #222;
-  }
-
-  .sort-options select {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #444;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.9);
-    min-width: 180px;
-  }
-
-  /* Content List */
-  #content-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .content-item {
-    background: white;
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    position: relative;
-    transition: transform 0.2s ease;
-  }
-  
-  body.dark-mode .content-item {
-    background: #333;
-    border-color: #555;
-  }
-  
-  .content-item:hover {
-    transform: translateY(-5px);
-  }
-  
-  .new-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff4757;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
-  .content-item img {
-    max-width: 100%;
-    border-radius: 4px;
-  }
-  
-  .content-info {
-    margin-top: 10px;
-  }
-  
-  .content-info strong {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-  
-  .content-info small {
-    color: #666;
-  }
-  
-  body.dark-mode .content-info small {
-    color: #aaa;
-  }
-  
-  .file-type {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-  
-  .rating {
-    color: #ffb400;
-    margin: 8px 0;
-    font-size: 14px;
-  }
-  
-  .rating-count {
-    color: #666;
-    font-size: 12px;
-  }
-  
-  body.dark-mode .rating-count {
-    color: #aaa;
-  }
-  
-  .download-btn, .quick-view {
-    display: inline-block;
-    width: calc(50% - 5px);
-    padding: 8px;
-    margin-top: 10px;
-    background: #444;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-family: Georgia, serif;
-    font-size: 14px;
-  }
-  
-  .quick-view {
-    margin-left: 10px;
-    background: #4a6fa5;
-  }
-  
-  .download-btn:hover {
-    background: #222;
-  }
-  
-  .quick-view:hover {
-    background: #3a5a8f;
-  }
-
-  /* Modal Styles */
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-  }
-  
-  body.dark-mode .modal-content {
-    background: #333;
-    color: #f1f1f1;
-  }
-  
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
   /* Footer Styles */
   footer {
     position: fixed;
@@ -318,51 +130,27 @@
     background: #222;
   }
 
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    #content-list {
-      grid-template-columns: 1fr;
-    }
-    
-    .toolbar {
-      flex-direction: column;
-    }
-    
-    #search-container {
-      width: 100%;
-    }
+  .footer-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
   }
   
-  @media (max-width: 600px) {
-    #search-container {
-      flex-direction: column;
-    }
-    
-    #search-input, #search-btn {
-      border-radius: 4px;
-      border-right: 2px solid #444;
-      margin-bottom: 10px;
-    }
-    
-    #search-btn {
-      border-right: 2px solid #444;
-    }
-    
-    .download-btn, .quick-view {
-      width: 100%;
-      margin-left: 0;
-    }
-    
-    .quick-view {
-      margin-top: 5px;
-    }
+  body.dark-mode .footer-text {
+    color: #aaa;
   }
+
+  /* [Keep all other existing CSS styles] */
 </style>
+<!-- Add Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
 <div class="logo-container">
   <img src="https://example.com/your-logo.png" alt="Site Logo" class="logo">
+  <span class="theme-label">Light/Dark mode</span>
   <button id="theme-toggle">🌓</button>
 </div>
 
@@ -399,48 +187,50 @@
 
 <footer>
   <button class="contact-btn" id="contact-btn">Contact Us</button>
+  <div class="footer-text">© 5K Graphic Studio</div>
 </footer>
 
 <script>
-  // Initialize products with sample data if empty
-  function initProducts() {
-    let products = JSON.parse(localStorage.getItem('digitalProducts'));
-    if (!products || products.length === 0) {
-      products = [
-        {
-          id: Date.now(),
-          fileName: "Sample Ebook",
-          description: "This is a sample product description.",
-          imageUrl: "https://via.placeholder.com/300x200?text=Sample+Ebook",
-          fileSize: "5MB",
-          downloadUrl: "#",
-          category: "Ebook",
-          extraInfo: "Includes PDF, EPUB and MOBI formats",
-          downloads: 42,
-          rating: 4,
-          ratingCount: 12,
-          dateAdded: new Date().toISOString()
-        }
-      ];
-      localStorage.setItem('digitalProducts', JSON.stringify(products));
+  // Firebase configuration - replace with your actual config
+   const firebaseConfig = {
+    apiKey: "AIzaSyAu422_wCwg6WGNjEdUzWnCQmOHxMo10jg",
+    authDomain: "digital-products-35abf.firebaseapp.com",
+    projectId: "digital-products-35abf",
+    storageBucket: "digital-products-35abf.firebasestorage.app",
+    messagingSenderId: "857790656936",
+    appId: "1:857790656936:web:cb68952565a57e2734ad9d",
+    measurementId: "G-QG1G2BR3ZP"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const productsRef = db.collection("products");
+
+  // Load products from Firestore
+  async function loadProducts() {
+    try {
+      const snapshot = await productsRef.get();
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (error) {
+      console.error("Error loading products:", error);
+      return [];
     }
-    return products;
   }
 
-  // Load products from localStorage
-  function loadProducts() {
-    return JSON.parse(localStorage.getItem('digitalProducts')) || initProducts();
-  }
-
-  // Save products to localStorage
-  function saveProducts(products) {
-    localStorage.setItem('digitalProducts', JSON.stringify(products));
-    displayContent(products);
-    localStorage.setItem('digitalProductsUpdate', Date.now());
+  // Increment download count
+  async function incrementDownload(productId) {
+    try {
+      await productsRef.doc(productId).update({
+        downloads: firebase.firestore.FieldValue.increment(1)
+      });
+    } catch (error) {
+      console.error("Error incrementing download count:", error);
+    }
   }
 
   // Display products
-  function displayContent(items) {
+  async function displayContent(items) {
     const container = document.getElementById('content-list');
     container.innerHTML = '';
 
@@ -461,7 +251,7 @@
       else if (item.category === "Video") fileTypeIcon = "🎬";
       
       // Check if product is new (added in last 7 days)
-      const isNew = new Date(item.dateAdded) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+      const isNew = item.dateAdded && new Date(item.dateAdded.toDate()) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
       
       div.innerHTML = `
         ${isNew ? '<span class="new-badge">NEW</span>' : ''}
@@ -494,105 +284,17 @@
     document.querySelectorAll('.download-btn').forEach(btn => {
       btn.addEventListener('click', function(e) {
         const productId = this.getAttribute('data-id');
-        const products = loadProducts();
-        const productIndex = products.findIndex(p => p.id == productId);
-        if (productIndex !== -1) {
-          products[productIndex].downloads = (products[productIndex].downloads || 0) + 1;
-          saveProducts(products);
-        }
+        incrementDownload(productId);
       });
     });
   }
 
-  // Quick View Modal
-  function showQuickView(e) {
-    const index = e.target.getAttribute('data-id');
-    const products = loadProducts();
-    const product = products[index];
-    
-    const modalContent = `
-      <h2>${product.fileName}</h2>
-      <img src="${product.imageUrl}" alt="${product.fileName}" style="max-width:100%; margin:10px 0;">
-      <div class="rating" style="font-size:18px;">
-        ${'★'.repeat(Math.round(product.rating || 0))}${'☆'.repeat(5 - Math.round(product.rating || 0))} 
-        <span class="rating-count">(${product.ratingCount || 0} reviews)</span>
-      </div>
-      <p><strong>Category:</strong> ${product.category}</p>
-      <p><strong>File Size:</strong> ${product.fileSize}</p>
-      <p><strong>Downloads:</strong> ${product.downloads || 0}</p>
-      <p><strong>Description:</strong> ${product.description}</p>
-      ${product.extraInfo ? `<p><strong>Additional Info:</strong> ${product.extraInfo}</p>` : ''}
-      <a href="${product.downloadUrl}" class="download-btn" style="display:block;width:100%;text-align:center;margin-top:20px;">Download Now</a>
-    `;
-    
-    document.getElementById('modal-content').innerHTML = modalContent;
-    document.getElementById('product-modal').style.display = 'flex';
-    
-    // Add event listener to download button in modal
-    document.querySelector('.modal .download-btn').addEventListener('click', function() {
-      const products = loadProducts();
-      const productIndex = index;
-      if (productIndex !== -1) {
-        products[productIndex].downloads = (products[productIndex].downloads || 0) + 1;
-        saveProducts(products);
-      }
-    });
-  }
+  // [Keep all other existing functions like showQuickView, searchContent, etc.]
 
-  // Close Modal
-  document.querySelector('.close-modal').addEventListener('click', function() {
-    document.getElementById('product-modal').style.display = 'none';
+  // Initialize
+  loadProducts().then(products => {
+    displayContent(products);
   });
-
-  // Close modal when clicking outside
-  window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('product-modal')) {
-      document.getElementById('product-modal').style.display = 'none';
-    }
-  });
-
-  // Sort products
-  document.getElementById('sort-by').addEventListener('change', function() {
-    const products = loadProducts();
-    const sortValue = this.value;
-    
-    let sortedProducts = [...products];
-    
-    switch(sortValue) {
-      case 'newest':
-        sortedProducts.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-        break;
-      case 'name':
-        sortedProducts.sort((a, b) => a.fileName.localeCompare(b.fileName));
-        break;
-      case 'downloads':
-        sortedProducts.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
-        break;
-      case 'rating':
-        sortedProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-        break;
-    }
-    
-    displayContent(sortedProducts);
-  });
-
-  // Search function
-  function searchContent() {
-    const query = document.getElementById('search-input').value.trim().toLowerCase();
-    if (!query) {
-      displayContent(loadProducts());
-      return;
-    }
-    const filtered = loadProducts().filter(item => {
-      return (
-        item.fileName.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query) ||
-        item.category.toLowerCase().includes(query) ||
-        (item.extraInfo && item.extraInfo.toLowerCase().includes(query))
-      );
-    });
-    displayContent(filtered);
-  }
 
   // Theme toggle
   document.getElementById('theme-toggle').addEventListener('click', function() {
@@ -604,26 +306,6 @@
   if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
   }
-
-  // Contact button
-  document.getElementById('contact-btn').addEventListener('click', function() {
-    alert("Contact us at: support@example.com\nPhone: (123) 456-7890");
-  });
-
-  // Event listeners
-  document.getElementById('search-btn').addEventListener('click', searchContent);
-  document.getElementById('search-input').addEventListener('keyup', (e) => {
-    if(e.key === 'Enter') searchContent();
-  });
-
-  // Storage event listener
-  window.addEventListener('storage', () => {
-    displayContent(loadProducts());
-  });
-
-  // Initial display
-  displayContent(loadProducts());
 </script>
-
 </body>
 </html>
