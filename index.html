@@ -609,11 +609,8 @@
           <strong>${item.fileName}</strong>
           <small>
             <span class="file-type">${fileTypeIcon}</span>
-            <em>${item.category}</em> | Size: ${item.fileSize} | Downloads: ${item.downloads || 0}
+            <em>${item.category}</em> | Size: ${item.fileSize}
           </small>
-          <div class="rating">${'★'.repeat(Math.round(item.rating || 0))}${'☆'.repeat(5 - Math.round(item.rating || 0))} 
-            <span class="rating-count">(${item.ratingCount || 0})</span>
-          </div>
           <p>${item.description.substring(0, 100)}${item.description.length > 100 ? '...' : ''}</p>
           ${item.extraInfo ? `<p><small>${item.extraInfo}</small></p>` : ''}
           <div class="action-buttons">
