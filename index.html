@@ -143,6 +143,121 @@
     background: rgba(255,255,255,0.9);
     min-width: 180px;
   }
+
+   #content-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .content-item {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  
+  body.dark-mode .content-item {
+    background: #333;
+    border-color: #555;
+  }
+  
+  .content-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .new-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4757;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .content-item img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  
+  .content-info {
+    margin-top: 10px;
+  }
+  
+  .content-info strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .content-info small {
+    color: #666;
+  }
+  
+  body.dark-mode .content-info small {
+    color: #aaa;
+  }
+  
+  .file-type {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .rating {
+    color: #ffb400;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  
+  .rating-count {
+    color: #666;
+    font-size: 12px;
+  }
+  
+  body.dark-mode .rating-count {
+    color: #aaa;
+  }
+  
+  .download-btn, .quick-view {
+    display: inline-block;
+    width: calc(50% - 5px);
+    padding: 8px;
+    margin-top: 10px;
+    background: #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 14px;
+  }
+  
+  .quick-view {
+    margin-left: 10px;
+    background: #4a6fa5;
+  }
+  
+  .download-btn:hover {
+    background: #222;
+  }
+  
+  .quick-view:hover {
+    background: #3a5a8f;
+  }
+
   /* [Keep all other existing CSS styles] */
   
   /* Footer Styles */
