@@ -534,7 +534,6 @@
       const isNew = item.dateAdded && new Date(item.dateAdded.toDate()) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
       
       div.innerHTML = `
-        ${isNew ? '<span class="new-badge"></span>' : ''}
         <img src="${item.imageUrl}" alt="${item.fileName}" />
         <div class="content-info">
           <strong>${item.fileName}</strong>
