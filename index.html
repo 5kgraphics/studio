@@ -531,7 +531,7 @@
       else if (item.category === "Video") fileTypeIcon = "🎬";
       
       // Check if product is new (added in last 7 days)
-      const isNew = item.dateAdded && new Date(item.dateAdded.toDate()) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+      // const isNew = item.dateAdded && new Date(item.dateAdded.toDate()) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
       
       div.innerHTML = `
         ${isNew ? '<span class="new-badge">NEW</span>' : ''}
