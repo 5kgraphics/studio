@@ -234,7 +234,7 @@
   .action-buttons {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
   }
   
   .download-btn, .quick-view {
@@ -366,20 +366,11 @@
     .subheading {
       font-size: 0.9rem;
     }
-    #content-list {
-      grid-template-columns: 1fr;
-    }
   }
 
   @media (min-width: 361px) and (max-width: 575px) {
     .logo {
       max-width: 140px;
-    }
-    #content-list {
-      grid-template-columns: 1fr;
-    }
-    .action-buttons {
-      flex-direction: column;
     }
   }
 
@@ -387,55 +378,22 @@
     .logo-container {
       padding: 20px 0;
     }
-    #content-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
-    .container {
-      padding: 0 25px;
-    }
     .theme-label {
       display: inline;
       right: 60px;
       font-size: 15px;
-    }
-    #content-list {
-      grid-template-columns: repeat(3, 1fr);
     }
     .toolbar {
       flex-direction: row;
     }
   }
 
-  @media (min-width: 992px) and (max-width: 1199px) {
-    .container {
-      max-width: 960px;
-    }
-    #content-list {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .modal-content {
-      width: 70%;
-    }
-  }
-
   @media (min-width: 1200px) {
     .container {
       max-width: 1140px;
-    }
-    #content-list {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  @media (min-width: 1600px) {
-    .container {
-      max-width: 1400px;
-    }
-    #content-list {
-      grid-template-columns: repeat(5, 1fr);
     }
   }
 
@@ -485,14 +443,14 @@
     <button id="search-btn">Search</button>
   </div>
   
-<!--  <div class="sort-options">
+  <div class="sort-options">
     <select id="sort-by">
       <option value="newest">Newest First</option>
       <option value="name">A-Z</option>
       <option value="downloads">Most Downloads</option>
       <option value="rating">Highest Rated</option>
     </select>
-  </div> -->
+  </div>
 </div>
 
 <div id="content-list">
@@ -514,11 +472,11 @@
 
 <script>
   // Firebase configuration - replace with your actual config
-   const firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyAu422_wCwg6WGNjEdUzWnCQmOHxMo10jg",
     authDomain: "digital-products-35abf.firebaseapp.com",
     projectId: "digital-products-35abf",
-    storageBucket: "digital-products-35abf.firebasestorage.app",
+    storageBucket: "digital-products-35abf.appspot.com",
     messagingSenderId: "857790656936",
     appId: "1:857790656936:web:cb68952565a57e2734ad9d",
     measurementId: "G-QG1G2BR3ZP"
@@ -608,11 +566,42 @@
     });
   }
 
-  // [Keep all other existing functions like showQuickView, searchContent, etc.]
+  // Search functionality
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  let allProducts = [];
+
+  function performSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    if (searchTerm === '') {
+      displayContent(allProducts);
+      return;
+    }
+
+    const filteredProducts = allProducts.filter(product => {
+      return (
+        product.fileName.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm) ||
+        product.category.toLowerCase().includes(searchTerm)
+      );
+    });
+    
+    displayContent(filteredProducts);
+  }
 
   // Initialize
   loadProducts().then(products => {
+    allProducts = products;
     displayContent(products);
+    
+    // Set up search event listeners
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
   });
 
   // Theme toggle
