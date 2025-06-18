@@ -359,7 +359,12 @@
     color: #aaa;
   }
 
-  .to-top {
+  .up {
+    background-color: red;
+    width: 0.5rem;
+  }
+
+/*   .to-top {
     background: white;
     position: fixed;
     bottom: 16px;
@@ -382,7 +387,7 @@
     bottom: 32px;
     pointer-events: auto;
     opacity: 1;
-  }
+  } */
 
   /* Responsive Styles */
   @media (max-width: 360px) {
@@ -456,9 +461,12 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-<a href=`a` class=`to-top`>
+<!-- <a href=`a` class=`to-top`>
     <i class=`fas fa-chevron-up`></i>
-  </a>
+  </a> -->
+<div class=`up`>
+  ^
+</div>
 <div class="logo-container">
   <img src="https://example.com/your-logo.png" alt="Site Logo" class="logo">
   <span class="theme-label"></span>
