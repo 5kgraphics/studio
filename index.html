@@ -368,11 +368,21 @@
     bottom: 16px;
     left: 95%;
     border-radius: 50%;
-    align-content: center;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1;
     font-weight: bolder;
     font-size: larger;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s;
+  }
+
+  .up.active {
+    /* bottom: 32px; */
+    pointer-events: auto;
+    opacity: 1;
   }
 
 /*   .to-top {
@@ -522,14 +532,23 @@
 
 <script>
 
-  const toTop = document.querySelector(`.to-top`);
-  window.addEventListener(`scroll`, () => {
-    if(window.pageYoffset > 100) {
-      toTop.classList.add(`active`);
+   const toTop = document.querySelector(".up");
+  window.addEventListener("scroll", () => {
+    if(window.pageYOffSet > 100) {
+      toTop.classList.add("active");
     } else {
-      toTop.classList.remove(`active`);
+      toTop.classList.remove("active");
     }
   })
+
+  // const toTop = document.querySelector(`.to-top`);
+  // window.addEventListener(`scroll`, () => {
+  //   if(window.pageYoffset > 100) {
+  //     toTop.classList.add(`active`);
+  //   } else {
+  //     toTop.classList.remove(`active`);
+  //   }
+  // })
   
   // Firebase configuration - replace with your actual config
   const firebaseConfig = {
