@@ -380,7 +380,7 @@
   }
 
   .up.active {
-    /* bottom: 32px; */
+    bottom: 32px;
     pointer-events: auto;
     opacity: 1;
   }
@@ -485,9 +485,9 @@
 <!-- <a href=`a` class=`to-top`>
     <i class=`fas fa-chevron-up`></i>
   </a> -->
-<div class="up">
+<a href="a" class="up">
   ^
-</div>
+</a>
 <div class="logo-container">
   <img src="https://example.com/your-logo.png" alt="Site Logo" class="logo">
   <span class="theme-label"></span>
@@ -534,7 +534,7 @@
 
    const toTop = document.querySelector(".up");
   window.addEventListener("scroll", () => {
-    if(window.pageYOffSet > 100) {
+    if(window.pageYOffset > 100) {
       toTop.classList.add("active");
     } else {
       toTop.classList.remove("active");
