@@ -359,32 +359,46 @@
     color: #aaa;
   }
 
+  /* New back-to-top button styles */
   .up {
-    color: black;
-    background: white;
-    width: 2rem;
-    height: 2rem;
+    background: #444;
+    color: white;
+    width: 60px;
+    height: 60px;
     position: fixed;
-    bottom: 10%;
-    left: 95%;
+    bottom: 100px;
+    right: 30px;
     border-radius: 50%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 1;
-    font-weight: bolder;
-    font-size: larger;
+    font-weight: bold;
+    font-size: 20px;
     opacity: 0;
     pointer-events: none;
-    transition: all .4s linear;
+    transition: all 0.4s ease;
     text-decoration: none;
     border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .up::after {
+    content: "Top of page";
+    font-size: 12px;
+    margin-top: 2px;
+    font-weight: normal;
+  }
+
+  .up:hover {
+    background: #222;
   }
 
   .up.active {
-    bottom: 32px;
-    pointer-events: auto;
     opacity: 1;
+    pointer-events: auto;
   }
 
   .sticky {
@@ -410,9 +424,8 @@
     .logo {
       max-width: 140px;
     }
-    .up {
-      left: 85%;
-      bottom: 10%;
+    #content-list {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -420,8 +433,8 @@
     .logo-container {
       padding: 20px 0;
     }
-    .up {
-      left: 80%;
+    #content-list {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -472,11 +485,8 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-<!-- <a href=`a` class=`to-top`>
-    <i class=`fas fa-chevron-up`></i>
-  </a> -->
 <button class="up">
-  ^
+  ↑
 </button>
 
     
@@ -524,8 +534,7 @@
 </footer>
 
 <script>
-
-   const toTop = document.querySelector(".up");
+  const toTop = document.querySelector(".up");
   window.addEventListener("scroll", () => {
     if(window.pageYOffset > 100) {
       toTop.classList.add("active");
@@ -535,18 +544,12 @@
   })
 
   toTop.addEventListener("click", () => {
-    window.scrollTo(0, 0)
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   })
 
-  // const toTop = document.querySelector(`.to-top`);
-  // window.addEventListener(`scroll`, () => {
-  //   if(window.pageYoffset > 100) {
-  //     toTop.classList.add(`active`);
-  //   } else {
-  //     toTop.classList.remove(`active`);
-  //   }
-  // })
-  
   // Firebase configuration - replace with your actual config
   const firebaseConfig = {
     apiKey: "AIzaSyAu422_wCwg6WGNjEdUzWnCQmOHxMo10jg",
@@ -584,6 +587,47 @@
       console.error("Error incrementing download count:", error);
     }
   }
+
+  // Show quick view modal
+  function showQuickView(e) {
+    const index = e.target.getAttribute('data-id');
+    const product = allProducts[index];
+    const modal = document.getElementById('product-modal');
+    const modalContent = document.getElementById('modal-content');
+    
+    modalContent.innerHTML = `
+      <h2>${product.fileName}</h2>
+      <p><strong>Category:</strong> ${product.category}</p>
+      <p><strong>File Size:</strong> ${product.fileSize}</p>
+      <p><strong>Description:</strong></p>
+      <p>${product.description}</p>
+      ${product.extraInfo ? `<p><strong>Additional Info:</strong> ${product.extraInfo}</p>` : ''}
+      <a href="${product.downloadUrl}" class="download-btn" style="display: inline-block; margin-top: 20px;" data-id="${product.id}">Download Now</a>
+    `;
+    
+    modal.style.display = "block";
+    
+    // Add event listener to the new download button in modal
+    const modalDownloadBtn = modalContent.querySelector('.download-btn');
+    if (modalDownloadBtn) {
+      modalDownloadBtn.addEventListener('click', function() {
+        incrementDownload(this.getAttribute('data-id'));
+      });
+    }
+  }
+
+  // Close modal when clicking the X
+  document.querySelector('.close-modal').addEventListener('click', function() {
+    document.getElementById('product-modal').style.display = 'none';
+  });
+
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('product-modal');
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
 
   // Display products
   async function displayContent(items) {
